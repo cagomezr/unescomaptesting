@@ -181,7 +181,7 @@ $(function($) {
 		}
 		if(loccounter===0){
 			$(".storesection").show();
-			aleralert("no location near you");	initMarkers(map);
+			alert("no location near you");	initMarkers(map);
 		}else{
 			$(".numStore").text(loccounter);
 			$(".hidenum").css("display","block");
