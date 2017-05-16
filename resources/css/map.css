@@ -1,0 +1,38 @@
+/*function*/
+/*function*/
+#map_canvas {
+  height: 600px;
+  max-width: 600px;
+  min-width: 310px; }
+
+.block50, .block30, .block70, .block66, .block33 {
+  float: left; }
+
+body {
+  text-align: center;
+  font-family: Helvetica, Arial, "Lucida Grande", sans-serif; }
+
+.hold {
+  text-align: left;
+  margin: 0 auto;
+  max-width: 1000px; }
+  .hold .block50 {
+    width: 50%; }
+  .hold .block30 {
+    width: 30%; }
+  .hold .block70 {
+    width: 70%; }
+  .hold .block66 {
+    width: 66%; }
+  .hold .block33 {
+    width: 33%; }
+
+.loccontent {
+  margin: 1em .75em; }
+  .loccontent > span {
+    display: block;
+    padding: .5em 0; }
+  .loccontent > .title {
+    font-weight: bold; }
+
+/*# sourceMappingURL=map.css.map */
