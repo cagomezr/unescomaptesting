@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Find Your Closet Parts Depot | Morimori Testplan1</title>
+	
+	<meta name="Description" content="Carlos places to visit| places I want to visit">
+	
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0,user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=8"/>
+	<link rel="canonical" href="http://aredthing.com/unescotest">
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript" src="resources/js/html5shiv.js"></script>
+	<script type="text/javascript" src="resources/js/selectivizr-min.js"></script>
+	<link rel="stylesheet" type="text/css" href="resources/css/map.css" />
+
+
+</head>
+<body  class="locations misc locations ">
+<div class="hold location padding mainPageContent">
+	<div>
+		<h1>list of unesco places to visit</h1>
+		<p>Wonders of Canada to visit which should be seen!</p><p>Never wonder where  I want to see again</p><br>
+
+	</div>
+	<div class="formcontainer">
+		<form class="submit1">
+			<label>Enter your Postal Code,or City</label>
+			<input type="text" name="Select" class="selstore autocomplete" placeholder="Enter Postal Code, City" autocomplete="off">
+			<input type="submit" class="submitbutton" value="Find Store">
+		</form>
+	</div>
+	
+	<div class="block66">
+		<div id="map_canvas" style="position: relative; overflow: hidden;"><div style="height: 100%; width: 100%;"></div>	
+	</div>
+	</div>
+	<div class="block33">							
+		<div class="urlcontainers"  ng-app="myApp" ng-controller="UserController">
+			<span class="red hidenum" style="display: block;">We found <span class="numStore"></span> stores near you</span>
+
+			<div ng-repeat="place in placelist">
+				<div id="{{place.id}}" class="storesection" data-lat="{{place.lat}}" data-long="{{place.lngt}}" >
+					<div class="loccontent">
+						<span class="title">{{place.name}}</span>
+						<span><span>{{place.address}}</span></span>
+						<span><span>{{place.city}}</span>
+						<span>{{place.prov}}</span>
+						<span>{{place.postal}}</span></span>
+						<a href="tel:0000000000">000-000-0000</a>
+						<div>
+							<a target="_blank"  href="https://www.google.com/maps/dir/{{place.getFullAddr}}" class="blue block50 directions_track">Get directions »</a>
+							<div style="clear:both;"></div>
+						</div>
+					</div>
+					<div style="clear:both;"></div>
+				</div>
+			</div>
+						
+			
+			
+			
+		</div>
+	</div>
+	<div style="clear:both"> </div>
+</div>
+
+<script type="text/javascript" src="resources/js/jquery.autocomplete.min.js"></script> 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>		
+<script type="text/javascript" src="resources/js/maptest.js"></script>
+<!--<script type="text/javascript" src="/resources/js/cities.js"></script>-->
+
+
+</body>
+</html>
