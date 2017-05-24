@@ -13,13 +13,13 @@ function landmark(id,name, address,city,prov,postal,lat,lngt) {
    }
 }
 var landmarks= [
-		new landmark("1","Rideau Canal","","Ottawa","ON","","45", "-75.766667"),
+		new landmark("1","Rideau Canal","","Ottawa","ON","","45.422164978", "-75.6916639"),
 		new landmark("2","SGang Gwaay", "Skeena-Queen Charlotte E", "Anthony Island", "BC", "V0T 1S0",  "52.095", "-131.220278"  ),
-		new landmark("3","Red Bay Basque Whaling Station", "","Red Bay", "NL", "A0K 4K0", "51.731944", "-56.425556" ),
+		new landmark("3","Red Bay Basque Whaling Station", "","Red Bay", "NL", "A0K 4K0", "51.7342966","-56.4298276" ),
 		new landmark( "4","Old Town Lunenburg","","Lunenburg","NS", "", "44.376111", "-64.309167" ),
 		new landmark("5","Old Québec","", "Québec City", "QC", "G1K 4E2", "46.809444","-71.210556" ),
 		new landmark("6", "Landscape of Grand-Pré","2205 Grand Pré Rd", "Grand Pré", "NS" , "B0P 1M0",  "45.118333", "-64.307222"),
-		new landmark("7","Head-Smashed-In Buffalo Jump","", "Fort MacLeod","AB", "T0L 0Z0", "49.749444", "-113.623889" ),
+		new landmark("7","Head-Smashed-In Buffalo Jump","", "Fort MacLeod","AB", "T0L 0Z0", "49.705334", "-113.6556087,17" ),
 		new landmark("8", "L'Anse aux Meadows National Historic Site","Division No. 9", "Subd. D", "NL","A0K 2X0", "51.466667","-55.616667")
 	];
 	 var app = angular.module('myApp', []);
@@ -132,7 +132,7 @@ $(function($) {
 /*location and store functions*/
 	function locate( latitude , longitude ){
 		var earthRadius1 = 6371.0; // miles
-		var maxDistance1 = 35.0;
+		var maxDistance1 = 250.0;
 		var loccounter =0;
 		deleteMarkers();
 		var newMarkers = [],
@@ -154,6 +154,7 @@ $(function($) {
 			
 			var a1 = Math.sin(dLati / 2) * Math.sin(dLati / 2) + Math.sin(dLoni / 2) * Math.sin(dLoni / 2) * Math.cos(lati1) * Math.cos(lati2);
 			var c1 = 2 * Math.atan2(Math.sqrt(a1), Math.sqrt(1-a1));
+			var test = earthRadius1 * c1;
 			if(earthRadius1 * c1 <= maxDistance1) {				
 				loccounter++;
 				$("#"+id).show();
@@ -174,7 +175,7 @@ $(function($) {
 				});;	
 				newMarkers.push(marker);
 				latlngbounds.extend(new google.maps.LatLng(latf, longf));
-				map.setZoom(6);
+				map.setZoom(5);
 			}
 			markers = newMarkers;
 			
@@ -186,7 +187,13 @@ $(function($) {
 			$(".numStore").text(loccounter);
 			$(".hidenum").css("display","block");
 			map.fitBounds(latlngbounds);
+			google.maps.event.addListenerOnce(map, 'bounds_changed', function(event) {
+				if (this.getZoom() > 14) {
+					this.setZoom(14);
+				}
+});
 		}
+		
 	}
 	var el = $('#map_canvas');
 	
@@ -195,7 +202,7 @@ $(function($) {
 	function initialize() {
 		var secheltLoc = new google.maps.LatLng(49.8291931, -97.1100462),			
 			myMapOptions = {
-				zoom: 4,
+				zoom: 3,
 				center: secheltLoc,
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			};
@@ -207,7 +214,10 @@ $(function($) {
 	}
 	function initMarkers(maps) {						
 		var newMarkers = [],
-			marker;															
+			marker;
+		
+		var latlngbounds = new google.maps.LatLngBounds(); 	
+					
 		for(var i=0; i< $(".storesection").length; i++) {
 			var d = i+1;
 			var storeobject =  $(".storesection")[i];
@@ -217,7 +227,8 @@ $(function($) {
 			var longf = parseFloat(longp);
 			var latf = parseFloat(latp);
 			var contentString= $("#"+id).html().replace("<img src=\"/resources/images/searmark.png\">", "");
-						
+		
+			
 			marker = new google.maps.Marker({
 				map: maps,
 				draggable: false,
@@ -232,7 +243,10 @@ $(function($) {
 				this.info.open(map, this);
 			});
 			newMarkers.push(marker);
+			latlngbounds.extend(new google.maps.LatLng(latf, longf));
+				
 		}
+		map.fitBounds(latlngbounds);
 		return newMarkers;
 	}
 	 // Sets the map on all markers in the array.

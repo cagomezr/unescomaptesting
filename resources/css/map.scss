@@ -1,13 +1,14 @@
 /*function*/
 $font-stack:    Helvetica, Arial, "Lucida Grande", sans-serif;;
-$head-side: #b9f442;
+$head-side: #d8d8d8;
 /*function*/
 #map_canvas{height:600px; max-width:650px; min-width:310px;}
 .block50,.block30,.block70,.block66,.block33{float:left;}
 
 body {
   text-align: center;
-  font-family:$font-stack
+  font-family:$font-stack;
+  margin:0;
  }
 .logo{height:30px;weight:200px}
 nav{background:#000;padding:1em;}
@@ -28,10 +29,23 @@ nav{background:#000;padding:1em;}
 	> span{display:block;}
 	> .title{font-weight:bold; padding:.5em 0;}
 }
+footer ,nav {
+    color: #fff;
+    background: #000;
+    padding: 1em;
+    
+}
+footer{margin: 1em 0 0;}
+@media screen and (max-width: 64em){
+	.hold {margin: 0 1em ;}
+	.hold .block66{width:60%; margin-right:3%}
+}
 @media screen and (max-width: 40em){
 .hold {
 	min-width:320px;
-	.block50,.block30,.block70,.block66,.block33{float:none; width:100%}
+	marging: 0 5%;
+	.block50,.block30,.block70,.block66,.block33{float:none; width:100%; padding:1em 0;}
 
 }
+#map_canvas{height:300px;}
 }
