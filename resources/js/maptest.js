@@ -1,40 +1,10 @@
-function landmark(id,name, address,city,prov,postal,lat,lngt) {
-   this.id= "id"+id;
-   this.name = name;
-   this.address = address;
-   this.city = city;
-   this.prov = prov;
-   this.postal = postal;
-   this.lat = lat;
-   this.lngt = lngt;
-   
-   this.getFullAddr = function () {
-      return this.address + " " + this.city + " " + this.prov+ " " + this.postal;
-   }
-}
-var landmarks= [
-		new landmark("1","Rideau Canal","","Ottawa","ON","","45.422164978", "-75.6916639"),
-		new landmark("2","SGang Gwaay", "Skeena-Queen Charlotte E", "Anthony Island", "BC", "V0T 1S0",  "52.095", "-131.220278"  ),
-		new landmark("3","Red Bay Basque Whaling Station", "","Red Bay", "NL", "A0K 4K0", "51.7342966","-56.4298276" ),
-		new landmark( "4","Old Town Lunenburg","","Lunenburg","NS", "", "44.376111", "-64.309167" ),
-		new landmark("5","Old Québec","", "Québec City", "QC", "G1K 4E2", "46.809444","-71.210556" ),
-		new landmark("6", "Landscape of Grand-Pré","2205 Grand Pré Rd", "Grand Pré", "NS" , "B0P 1M0",  "45.118333", "-64.307222"),
-		new landmark("7","Head-Smashed-In Buffalo Jump","", "Fort MacLeod","AB", "T0L 0Z0", "49.705334", "-113.6556087,17" ),
-		new landmark("8", "L'Anse aux Meadows National Historic Site","Division No. 9", "Subd. D", "NL","A0K 2X0", "51.466667","-55.616667")
-	];
+
+
 	 var app = angular.module('myApp', []);
 app.controller('UserController', function($scope){
    $scope.placelist = landmarks;
 });
 
-var cities = [{ value: 'Calgary', data: '51.0486151,-114.0708459' },{ value: 'Medicine Hat', data: '50.0405486,-110.6764258' }, 
-{ value: 'Dartmouth', data: '44.6652059,-63.5677427' }, { value: 'St. John', data: '45.273315,-66.063308' },
-{ value: 'Quebec', data: '46.810811,-71.215439' },{ value: 'Ottawa', data: '45.4215296,-75.6971931' },
-{ value: 'Montreal', data: '45.501689,-73.567256' },{ value: 'Laval', data: '45.6066487,-73.712409' }, 
-{ value: 'Gatineau', data: '45.4765446,-75.7012723' },{ value: 'Red Bay', data: '51.733482, -56.422167' },
-{ value: 'Lunenburg', data: '44.377005, -64.318835' },{ value: 'Ile de Orleans', data: '46.820772, -71.173934' },
-{ value: 'Mocton', data: '43.928903, -65.899843' },{ value: 'New Glassgow', data: '45.047284, -64.484897' },
-{ value: 'Grand-Pré', data: '43.929124, -65.898413' },{ value: 'Levis', data: '46.738227, -71.246459' }];
 
 $(function($) {
 	if($("body").hasClass("locations")){

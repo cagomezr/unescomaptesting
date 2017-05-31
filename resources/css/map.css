@@ -3,7 +3,7 @@
 #map_canvas {
   height: 600px;
   max-width: 650px;
-  min-width: 310px; }
+  min-width: 260px; }
 
 .block50, .block30, .block70, .block66, .block33 {
   float: left; }
@@ -61,6 +61,9 @@ footer, nav {
 footer {
   margin: 1em 0 0; }
 
+.stickyFooter {
+  display: none; }
+
 @media screen and (max-width: 64em) {
   .hold {
     margin: 0 1em; }
@@ -70,7 +73,7 @@ footer {
     margin-right: 3%; } }
 @media screen and (max-width: 40em) {
   .hold {
-    min-width: 320px;
+    width: 90%;
     marging: 0 5%; }
     .hold .block50, .hold .block30, .hold .block70, .hold .block66, .hold .block33 {
       float: none;
@@ -78,6 +81,28 @@ footer {
       padding: 1em 0; }
 
   #map_canvas {
-    height: 300px; } }
+    height: 300px; }
+
+  .stickyFooter {
+    display: block;
+    width: 100%;
+    z-index: 99;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.6);
+    background: #000;
+    padding: 1.25em 0; }
+
+  footer {
+    margin: 1em 0 0;
+    padding-bottom: 5em; }
+
+  .stickyFooter a {
+    background: red;
+    color: #FFF;
+    font-size: 2em;
+    padding: .25em 1em;
+    text-decoration: none; } }
 
 /*# sourceMappingURL=map.css.map */
